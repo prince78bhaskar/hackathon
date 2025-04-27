@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Form</title>
+    <style>
+        /* CSS for styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .form-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #00ff00;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-container div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            background-color: #0d0d0d;
+            color: #00ff00;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #00cc00;
+            background-color: #1a1a1a;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        input[type="submit"] {
+            background-color: #00ff00;
+            color: #000000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #00cc00;
+            box-shadow: 0 0 15px #00cc00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Team Form</h2>
+        <form id="team-form">
+            <div>
+                <label for="name">Name</label>
+                <input id="name" type="text" placeholder="Enter your name" required>
+            </div>
+            <div>
+                <label for="mobile">Mobile no.</label>
+                <input id="mobile" type="tel" placeholder="Enter your mobile number" required>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="Enter your email" required>
+            </div>
+            <div>
+                <label for="img">Photo</label>
+                <input id="img" type="file" accept="image/*">
+            </div>
+            <div>
+                <input id="submit" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Handling form submission
+        document.getElementById('team-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get form data
+            let name = document.getElementById('name').value;
+            let mobile = document.getElementById('mobile').value;
+            let email = document.getElementById('email').value;
+            let img = document.getElementById('img').files[0]?.name || 'No image uploaded';
+
+            // Get existing data from localStorage
+            let teamData = JSON.parse(localStorage.getItem('teamData')) || [];
+
+            // Add new data to the array
+            teamData.push({ name, mobile, email, img });
+
+            // Save updated data back to localStorage
+            localStorage.setItem('teamData', JSON.stringify(teamData));
+
+            // Generate WhatsApp message
+            let message = `Team Form Submission:\nName: ${name}\nMobile: ${mobile}\nEmail: ${email}\nPhoto: ${img}`;
+            let phoneNumber = "9125761298"; // Your WhatsApp number
+
+            // Create WhatsApp link
+            let whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+            // Open WhatsApp with pre-filled message
+            window.location.href = whatsappLink;
+        });
+    </script>
+</body>
+
+</html>

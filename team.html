@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- // Base64 encoded  (this is the encoded form of "Prince-love") -->
+    <title>Our Team</title>
+<style>
+    /* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and background */
+body {
+    background-color: #121212;
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    background-image: url('gif.gif');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+/* Video background */
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Ensures the video stays behind content */
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: #ff1e00;
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px #ff0000;
+    margin-bottom: 30px;
+}
+
+/* Table styling */
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 0 15px rgba(0, 84, 219, 0.7);
+    background-color: rgba(8, 50, 221, 0.8); /* Transparent black background */
+    border-radius: 10px;
+    z-index: 1; /* Ensures it is above the video background */
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+    border: 1px solid #00ff2f;
+}
+
+th {
+    background-color: #333;
+    color: #00ff00;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 3px solid #00ff00;
+}
+
+td {
+    background-color: #090c10;
+    color: #00ff00;
+    font-size: 1rem;
+}
+
+td img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+tr:hover {
+    background-color: #d21010;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 60, 0, 0.8);
+}
+
+/* Password container styling */
+.password-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+    color: white;
+    z-index: 2; /* Ensure password form is on top of other elements */
+}
+
+.password-box {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+}
+
+input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #00ff00;
+    background-color: #1a1a1a;
+    color: #00ff00;
+    font-size: 1rem;
+    width: 200px;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #00ff00;
+    color: #121212;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #00cc00;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+
+    th, td {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    td img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+</style>
+</head>
+<body>
+<!-- Password container (visible before login) -->
+<div id="password-container" class="password-container">
+    <div class="password-box">
+        <h2>Please enter the password</h2>
+        <form id="password-form">
+            <input type="password" id="password-input" placeholder="Enter password" required />
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</div>
+
+<!-- Main content of the page (hidden until password is entered correctly) -->
+<div id="content" style="display: none;">
+    <h1>Our Team</h1>
+    <div>
+        <table>
+            <tr>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Mobile No.</th>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td><img src="team-member1.jpg" alt="Member 1"></td>
+                <td>John Doe</td>
+                <td>123-456-7890</td>
+                <td>johndoe@example.com</td>
+            </tr>
+            <tr>
+                <td><img src="team-member2.jpg" alt="Member 2"></td>
+                <td>Jane Smith</td>
+                <td>987-654-3210</td>
+                <td>janesmith@example.com</td>
+            </tr>
+            <tr>
+                <td><img src="team-member3.jpg" alt="Member 3"></td>
+                <td>Tom Brown</td>
+                <td>555-123-4567</td>
+                <td>tombrown@example.com</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    
+    const encodedPassword = "UHJpbmNlLWxvdmU=";
+    const form = document.getElementById('password-form');
+    const passwordInput = document.getElementById('password-input');
+    const content = document.getElementById('content');
+    const passwordContainer = document.getElementById('password-container');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const enteredPassword = passwordInput.value;
+
+        // Decode the base64 encoded password
+        const decodedPassword = atob(encodedPassword);
+
+        if (enteredPassword === decodedPassword) {
+            // Show the content and hide the password form
+            content.style.display = 'block';
+            passwordContainer.style.display = 'none';
+        } else {
+            alert('Incorrect password!');
+        }
+    });
+</script>
+
+</body>
+</html>

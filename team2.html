@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - DevNova</title>
+   <style>
+    /* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #121212;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* Video background */
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Password container styling */
+.password-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: rgb(196, 18, 18);
+    z-index: 2;
+}
+
+/* Password box styling */
+.password-box {
+  
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #00ff00;
+}
+
+input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #00ff00;
+    background-color: #1a1a1a;
+    color: #00ff00;
+    font-size: 1rem;
+    width: 200px;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #00ff00;
+    color: #121212;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #00cc00;
+}
+
+/* Main content styling */
+#content {
+    display: none;
+    text-align: center;
+    z-index: 1;
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
+
+h1 {
+    color: #ff1e00;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #ff0000;
+}
+
+h2 {
+    color: #ed0606;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+strong {
+    color: #ffcc00;
+}
+
+a {
+    font-size: 1.2rem;
+    color: #00ff00;
+    text-decoration: none;
+    border: 1px solid #00ff00;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #00ff00;
+    color: #121212;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .password-box {
+        padding: 30px;
+        width: 80%;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+   </style>
+</head>
+<body>
+    <video src="logo.mp4"  autoplay loop muted ></video>
+<!-- Password container (visible before login) -->
+<div id="password-container" class="password-container">
+    <div class="password-box">
+      
+        <form id="password-form">
+            <input type="password" id="password-input" placeholder="Enter password" required />
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</div>
+<!-- Main content of the page (hidden until password is entered correctly) -->
+<div id="content" style="display: none;">
+    <div class="container">
+        <h1>Our Team at DevNova</h1>
+        <h2>Empowering the Web with Innovation</h2>
+        <p>At <strong>DevNova</strong>, we believe that every line of code is an opportunity to make the web better. Our team of passionate developers and designers work tirelessly to bring creative, functional, and user-centered digital experiences.</p>
+        
+        <p>As web developers, we are driven by challenges. Every bug fixed, every design enhanced, every functionality added, makes us more capable and determined to push the boundaries of innovation.</p>
+
+        <a href="team.html">Meet Our Team</a>
+    </div>
+</div>
+
+<script>
+    
+    const encodedPassword = "UHJpbmNlLWxvdmU=";  
+
+    const form = document.getElementById('password-form');
+    const passwordInput = document.getElementById('password-input');
+    const content = document.getElementById('content');
+    const passwordContainer = document.getElementById('password-container');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const enteredPassword = passwordInput.value;
+
+        // Decode the Base64 password and check
+        if (atob(encodedPassword) === enteredPassword) {
+            content.style.display = 'block';
+            passwordContainer.style.display = 'none';
+        } else {
+            alert('Incorrect password!');
+        }
+    });
+</script>
+
+</body>
+</html>

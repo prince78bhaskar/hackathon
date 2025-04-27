@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prince Bhaskar's Personal Website</title>
+    <style>
+      /* Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+  
+      /* Body with GIF background */
+      body {
+        font-family: 'Poppins', 'Courier New', Courier, monospace;
+        background-image: url(gif2.gif);
+        background-size: cover;
+        color: #ffffff;
+        line-height: 1.6;
+        padding: 20px;
+      }
+  
+      /* Header */
+      header {
+        text-align: center;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        border-bottom: 2px solid #00ff00;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 4px 10px rgba(0, 255, 0, 0.3);
+      }
+  
+      header h1 {
+        font-size: 3rem;
+        color: #00ff00;
+        text-shadow: 0 0 8px #00ff00;
+      }
+  
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 15px;
+      }
+  
+      nav a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: 0.3s;
+      }
+  
+      nav a:hover {
+        color: #00ff00;
+        text-shadow: 0 0 8px #00ff00;
+      }
+  
+      /* Sections */
+      section, .skills, .projects, .team,  footer {
+        background: rgba(0, 0, 0, 0.6);
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 15px;
+        max-width: 1000px;
+        backdrop-filter: blur(5px);
+        border: 1px solid #00ff00;
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+      }
+      .nova{
+        background: rgba(12, 5, 5, 0.6);
+        margin: 30px auto;
+        padding: 20px;
+        text-align: center;
+        border-radius: 15px;
+        max-width: 1000px;
+        backdrop-filter: blur(5px);
+        border: 1px solid #13e913;
+        box-shadow: 0 0 15px rgba(89, 255, 0, 0.3);
+      }
+      .nova h2 a{
+        color: #00ff00;
+
+      }
+  
+      section h2, .skills h2, .projects h2, .team h2 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+        color: #00ff00;
+        text-shadow: 0 0 8px #00ff00;
+        text-align: center;
+      }
+  
+      section p, .team p, .projects ul, .skills ul {
+        font-size: 1.1rem;
+        color: #dddddd;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      .team, .nova h2{
+        text-align: center;
+        color: white;
+      }
+  
+      /* Profile Picture */
+      .profile-pic {
+        display: block;
+        margin: 20px auto;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 3px solid #00ff00;
+        box-shadow: 0 0 20px #00ff00;
+        transition: transform 0.4s, box-shadow 0.4s;
+      }
+  
+      .profile-pic:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px #00ff00;
+      }
+  
+      /* Skills and Projects Lists */
+      .skills ul, .projects ul {
+        list-style: none;
+        padding: 0;
+      }
+  
+      .skills li, .projects li {
+        margin: 10px 0;
+        font-size: 1.2rem;
+        color: #eeeeee;
+        transition: 0.3s;
+      }
+  
+      .skills li:hover, .projects li:hover {
+        color: #00ff00;
+        text-shadow: 0 0 5px #00ff00;
+        cursor: pointer;
+      }
+  
+      .projects a {
+        color: #00ffcc;
+        text-decoration: underline;
+        transition: 0.3s;
+      }
+  
+      .projects a:hover {
+        color: #00ff00;
+        text-shadow: 0 0 5px #00ff00;
+      }
+  
+      /* Footer */
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 1rem;
+        border-top: 2px solid #00ff00;
+      }
+  
+      footer p {
+        margin-top: 10px;
+        color: #aaaaaa;
+      }
+    </style>
+</head>
+
+<body>
+  <header>
+    <h1>Prince Bhaskar</h1>
+    <nav>
+      <ul>
+        <li><a href="team2.html">My Team</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="form.html">Form</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>I am a student with a keen interest in web development and ethical hacking. I love to explore new technologies and apply them in real-world projects.</p>
+    <img src="1.jpg" alt="Prince Bhaskar" class="profile-pic">
+  </section>
+
+  <div class="skills" id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>Python</li>
+      <li>C Programming</li>
+    </ul>
+  </div>
+
+  <div class="projects" id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li><a href="#">My portfolio website</a></li>
+      <li><a href="#">Hospital management system</a></li>
+      <li><a href="#">Grocery management system</a></li>
+    </ul>
+  </div>
+
+  <div class="team" id="team">
+    <h2>JOIN MY TEAM</h2>
+    <p>We are looking for passionate individuals who are eager to learn and grow in the field of web development. If you have a strong foundation in HTML, CSS, JavaScript, Python, or C programming, we want to hear from you!</p>
+    <p>Do you want to be a part of a dynamic team that is changing the game? We believe in learning, sharing, and growing together. If you're ready to write code that makes a difference, reach out and join us. Together, we can achieve anything!</p>
+    <br>
+</div>
+   <div class="nova">
+    <h2><a href="dev.html">DevNova</a></h2>
+    <b><p>If you want to join my team, please fill out the form and submit it.</p></b>
+    <h2><a href="#">Form</a></h2>
+   </div>
+  
+
+  <footer id="contact">
+    <p>© 2025 Prince Bhaskar</p>
+  </footer>
+
+</body>
+
+</html>
